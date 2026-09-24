@@ -10,7 +10,8 @@ public class MensajeMQTT {
     private final int id;
     private final Sensor dispositivo;
     private final String payload;
-    private final String timestamp;
+    private final String timestamp; 
+    // atributos de la clase MensajeMQTT
 
     public MensajeMQTT(int id, Sensor dispositivo, String payload, String timestamp) {
         this.id = id;
@@ -23,10 +24,16 @@ public class MensajeMQTT {
     public Sensor getDispositivo() { return dispositivo; }
     public String getPayload() { return payload; }
     public String getTimestamp() { return timestamp; }
+    // getters de la clase MensajeMQTT 
 
     @Override
     public String toString() {
-        return "MensajeMQTT{" + "id=" + id + ", dispositivo=" + dispositivo + ", payload=" + payload + ", timestamp=" + timestamp + '}';
+        return "MensajeMQTT:" + "\n" + 
+        "ID:" + id + "\n" + 
+        "Dispositivo:" + dispositivo + "\n" + 
+        "Payload:" + payload + "\n" + 
+        "Timestamp:" + timestamp + "\n";
     }
+    // mensaje de salida de la clase MensajeMQTT
     
 }
