@@ -12,7 +12,6 @@ public class Principal {
         servidor.publicarMensaje(new MensajeMQTT(1, Sensor.S01, "28.5 °C", "10:00:01"));
         servidor.publicarMensaje(new MensajeMQTT(2, Sensor.S02, "76 %", "10:00:02"));
         servidor.publicarMensaje(new MensajeMQTT(3, Sensor.S03, "45 cm", "10:00:03"));
-	}
 
         Scanner scanner = new Scanner(System.in);
         int op = -1;
@@ -46,6 +45,5 @@ public class Principal {
                         
             }
         }
-                
-
+    }
 }

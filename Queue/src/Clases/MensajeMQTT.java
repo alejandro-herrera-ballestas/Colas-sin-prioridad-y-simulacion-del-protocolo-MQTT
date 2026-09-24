@@ -36,4 +36,5 @@ public class MensajeMQTT {
     }
     // mensaje de salida de la clase MensajeMQTT
     
+    
 }
