@@ -17,8 +17,10 @@ public class Principal {
         int op = -1;
         while (op != 0) {
             System.out.println("Ingrese una opción:");
-            System.out.println("1. Publicar mensaje");
-            System.out.println("2. Procesar mensaje");
+            System.out.println("1. Crear la cola de mensajes");
+            System.out.println("2. Publicar mensaje");
+            System.out.println("3. Procesar mensaje");
+            System.out.println("4. Simular secuencia de operaciones");
             System.out.println("0. Salir");
             op = scanner.nextInt();
             scanner.nextLine(); // Limpiar el buffer
