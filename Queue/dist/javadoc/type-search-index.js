@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"co.edu.unicartagena.queue","l":"Cola"},{"p":"Clases","l":"MensajeMQTT"},{"p":"co.edu.unicartagena.queue","l":"Nodo"},{"p":"app","l":"Principal"},{"p":"Clases","l":"Sensor"},{"p":"Clases","l":"ServidorMQTT"}];updateSearchResults();
