@@ -8,10 +8,7 @@ import java.util.Scanner;
 
 public class Principal {
 	public static void main(String args[]){
-        ServidorMQTT servidor = new ServidorMQTT();
-        servidor.publicarMensaje(new MensajeMQTT(1, Sensor.S01, "28.5 °C", "10:00:01"));
-        servidor.publicarMensaje(new MensajeMQTT(2, Sensor.S02, "76 %", "10:00:02"));
-        servidor.publicarMensaje(new MensajeMQTT(3, Sensor.S03, "45 cm", "10:00:03"));
+         ServidorMQTT servidor = null;
 
         Scanner scanner = new Scanner(System.in);
         int op = -1;
@@ -24,28 +21,68 @@ public class Principal {
             System.out.println("0. Salir");
             op = scanner.nextInt();
             scanner.nextLine(); // Limpiar el buffer
+            int contador = 3; // Inicializar el contador de ID en 3, ya que los primeros tres mensajes tienen IDs 1, 2 y 3
 
             switch (op) {
                 case 1:
-                    System.out.println("Crear la cola de mensajes");
-                    break;
+                        servidor = new ServidorMQTT();
+                        System.out.println("Cola creada. Actualmente está vacía.");
+                        break;
                 case 2:
-                    System.out.println("Publicar mensaje");
+                        if (servidor == null) {
+                            System.out.println("Primero debe crear la cola (opción 1).");
+                            break;
+                        }
+                    try {
+                        System.out.println("Ingrese el sensor (S01, S02, S03): ");
+                        String sensorTexto = scanner.nextLine();
+                        Sensor sensor = Sensor.valueOf(sensorTexto.toUpperCase()); // Convertir el texto a mayúsculas para que coincida con los valores del enum
+
+                        System.out.println("Ingrese el payload (valor medido): ");
+                        String payload = scanner.nextLine();
+
+                        System.out.println("Ingrese el timestamp (ej: 10:00:05): ");
+                        String timestamp = scanner.nextLine();
+
+                        contador++; // Incrementar el contador de ID
+                        MensajeMQTT nuevoMensaje = new MensajeMQTT(contador, sensor, payload, timestamp);
+
+                        servidor.publicarMensaje(nuevoMensaje);
+                    } catch (IllegalArgumentException e) {
+                        System.out.println("Sensor inválido. Por favor ingrese S01, S02 o S03.");
+                    }
+                    
                     break;
                 case 3:
-                    System.out.println("Procesar mensaje");
-                    break;
+                        if (servidor == null) {
+                            System.out.println("Primero debe crear la cola (opción 1).");
+                            break;
+                        }
+                        servidor.procesarMensaje();
+                        break;
                 case 4:
-                    System.out.println("Simular secuencia de operaciones");
-                    break;
+                        if (servidor == null) {
+                            System.out.println("Primero debe crear la cola (opción 1).");
+                            break;
+                        }
+
+                        servidor.publicarMensaje(new MensajeMQTT(++contador, Sensor.S01, "28.5 °C", "10:00:01"));
+                        servidor.publicarMensaje(new MensajeMQTT(++contador, Sensor.S02, "76 %", "10:00:02"));
+                        servidor.publicarMensaje(new MensajeMQTT(++contador, Sensor.S03, "45 cm", "10:00:03"));
+                        servidor.procesarMensaje();
+                        servidor.publicarMensaje(new MensajeMQTT(++contador, Sensor.S01, "29.1 °C", "10:00:04"));
+                        servidor.procesarMensaje();
+                        servidor.procesarMensaje();
+                        servidor.procesarMensaje();
+                        servidor.procesarMensaje(); // esta debe mostrar "cola vacía"
+                        break;
                 case 0:
-                    System.out.println("Saliendo del programa...");
-                    break;
+                        System.out.println("Saliendo del programa...");
+                        break;
                 default:
-                    System.out.println("Opción inválida. Intente nuevamente.");
-                    break;
-                        
-            }
+                        System.out.println("Opción inválida. Intente nuevamente.");
+                        break;
+            } 
         }
     }
 }
