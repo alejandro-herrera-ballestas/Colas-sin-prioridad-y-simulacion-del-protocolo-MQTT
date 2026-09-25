@@ -12,6 +12,8 @@ public class Principal {
 
         Scanner scanner = new Scanner(System.in);
         int op = -1;
+        int contador = 3; // Inicializar el contador de ID en 3, ya que los primeros tres mensajes tienen IDs 1, 2 y 3
+        
         while (op != 0) {
             System.out.println("Ingrese una opción:");
             System.out.println("1. Crear la cola de mensajes");
@@ -19,13 +21,13 @@ public class Principal {
             System.out.println("3. Procesar mensaje");
             System.out.println("4. Simular secuencia de operaciones");
             System.out.println("0. Salir");
+            System.out.print("Opción: ");
             op = scanner.nextInt();
             scanner.nextLine(); // Limpiar el buffer
-            int contador = 3; // Inicializar el contador de ID en 3, ya que los primeros tres mensajes tienen IDs 1, 2 y 3
 
             switch (op) {
                 case 1:
-                        servidor = new ServidorMQTT();
+                        servidor = new ServidorMQTT(); // Crear la cola de mensajes (punto 1 del enunciado)
                         System.out.println("Cola creada. Actualmente está vacía.");
                         break;
                 case 2:
@@ -51,7 +53,7 @@ public class Principal {
                     } catch (IllegalArgumentException e) {
                         System.out.println("Sensor inválido. Por favor ingrese S01, S02 o S03.");
                     }
-                    
+                    // evitar que el usuario ingrese un sensor que no esté definido en el enum Sensor
                     break;
                 case 3:
                         if (servidor == null) {
