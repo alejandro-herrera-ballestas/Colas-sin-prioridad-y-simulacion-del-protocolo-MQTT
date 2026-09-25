@@ -35,24 +35,24 @@ public class Principal {
                             System.out.println("Primero debe crear la cola (opción 1).");
                             break;
                         }
-                    try {
-                        System.out.println("Ingrese el sensor (S01, S02, S03): ");
-                        String sensorTexto = scanner.nextLine();
-                        Sensor sensor = Sensor.valueOf(sensorTexto.toUpperCase()); // Convertir el texto a mayúsculas para que coincida con los valores del enum
+                        try {
+                            System.out.println("Ingrese el sensor (S01, S02, S03): ");
+                            String sensorTexto = scanner.nextLine();
+                            Sensor sensor = Sensor.valueOf(sensorTexto.toUpperCase()); // Convertir el texto a mayúsculas para que coincida con los valores del enum
 
-                        System.out.println("Ingrese el payload (valor medido): ");
-                        String payload = scanner.nextLine();
+                            System.out.println("Ingrese el payload (valor medido): ");
+                            String payload = scanner.nextLine();
 
-                        System.out.println("Ingrese el timestamp (ej: 10:00:05): ");
-                        String timestamp = scanner.nextLine();
+                            System.out.println("Ingrese el timestamp (ej: 10:00:05): ");
+                            String timestamp = scanner.nextLine();
 
-                        contador++; // Incrementar el contador de ID
-                        MensajeMQTT nuevoMensaje = new MensajeMQTT(contador, sensor, payload, timestamp);
+                            contador++; // Incrementar el contador de ID
+                            MensajeMQTT nuevoMensaje = new MensajeMQTT(contador, sensor, payload, timestamp);
 
-                        servidor.publicarMensaje(nuevoMensaje);
-                    } catch (IllegalArgumentException e) {
-                        System.out.println("Sensor inválido. Por favor ingrese S01, S02 o S03.");
-                    }
+                            servidor.publicarMensaje(nuevoMensaje);
+                        } catch (IllegalArgumentException e) {
+                            System.out.println("Sensor inválido. Por favor ingrese S01, S02 o S03.");
+                        }
                     // evitar que el usuario ingrese un sensor que no esté definido en el enum Sensor
                     break;
                 case 3:
@@ -68,11 +68,12 @@ public class Principal {
                             break;
                         }
 
-                        servidor.publicarMensaje(new MensajeMQTT(++contador, Sensor.S01, "28.5 °C", "10:00:01"));
-                        servidor.publicarMensaje(new MensajeMQTT(++contador, Sensor.S02, "76 %", "10:00:02"));
-                        servidor.publicarMensaje(new MensajeMQTT(++contador, Sensor.S03, "45 cm", "10:00:03"));
+                        int idSecuencia = 0; // Variable para llevar el control del ID de los mensajes en la secuencia
+                        servidor.publicarMensaje(new MensajeMQTT(++idSecuencia, Sensor.S01, "28.5 °C", "10:00:01"));
+                        servidor.publicarMensaje(new MensajeMQTT(++idSecuencia, Sensor.S02, "76 %", "10:00:02"));
+                        servidor.publicarMensaje(new MensajeMQTT(++idSecuencia, Sensor.S03, "45 cm", "10:00:03"));
                         servidor.procesarMensaje();
-                        servidor.publicarMensaje(new MensajeMQTT(++contador, Sensor.S01, "29.1 °C", "10:00:04"));
+                        servidor.publicarMensaje(new MensajeMQTT(++idSecuencia, Sensor.S01, "29.1 °C", "10:00:04"));
                         servidor.procesarMensaje();
                         servidor.procesarMensaje();
                         servidor.procesarMensaje();
