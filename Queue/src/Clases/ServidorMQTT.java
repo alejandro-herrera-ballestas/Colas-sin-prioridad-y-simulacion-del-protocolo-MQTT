@@ -11,7 +11,7 @@ import co.edu.unicartagena.queue.Cola;
  */
 public class ServidorMQTT {
 
-      private Cola<MensajeMQTT> cola = new Cola<>();    // Cola para almacenar los mensajes MQTT (punto 1 del enunciado)
+      private Cola<MensajeMQTT> cola = new Cola<>();    
    
         public void publicarMensaje(MensajeMQTT mensaje) {   // Método para publicar un mensaje MQTT (punto 2 del enunciado)
         MensajeMQTT m = mensaje;

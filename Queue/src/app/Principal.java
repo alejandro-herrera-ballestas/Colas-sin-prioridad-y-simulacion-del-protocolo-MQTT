@@ -74,8 +74,9 @@ public class Principal {
                         servidor.procesarMensaje();
                         servidor.procesarMensaje();
                         servidor.procesarMensaje();
-                        servidor.procesarMensaje(); // esta debe mostrar "cola vacía"
+                        servidor.procesarMensaje(); // muestra la cola vacia
                         break;
+                        // punto 4 del enunciado: Simulación de la secuencia de operaciones
                 case 0:
                         System.out.println("Saliendo del programa...");
                         break;
