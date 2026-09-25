@@ -32,7 +32,8 @@ public class MensajeMQTT {
         "ID:" + id + "\n" + 
         "Dispositivo:" + dispositivo + "\n" + 
         "Payload:" + payload + "\n" + 
-        "Timestamp:" + timestamp + "\n";
+        "Timestamp:" + timestamp + "\n" + 
+        "Topic:" + dispositivo.getTopic();
     }
     // mensaje de salida de la clase MensajeMQTT
     
