@@ -1,3 +1,9 @@
+/**
+ Primera Juan 6902510051
+ Herrera Alejandro 6902510014
+ Aaron Hernandez 6902510046
+ */
+
 package app;
 import Clases.MensajeMQTT;
 import Clases.Sensor;
@@ -5,9 +11,12 @@ import Clases.ServidorMQTT;
 import co.edu.unicartagena.queue.Cola;
 import co.edu.unicartagena.queue.Nodo;
 import java.util.Scanner;
+import java.io.PrintStream;
+import java.io.UnsupportedEncodingException;
 
 public class Principal {
-	public static void main(String args[]){
+	public static void main(String args[]) throws UnsupportedEncodingException{
+         System.setOut(new PrintStream(System.out,true,"UTF-8"));
          ServidorMQTT servidor = null;
 
         Scanner scanner = new Scanner(System.in);
