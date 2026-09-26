@@ -6,8 +6,9 @@ import Clases.MensajeMQTT;
 import co.edu.unicartagena.queue.Cola;
 
 /**
- Juan Primera 6902510051
- Alejandro Herera 69025100
+ Primera Juan 6902510051
+ Herrera Alejandro 6902510014
+ Aaron Hernandez 6902510046
  */
 public class ServidorMQTT {
 
