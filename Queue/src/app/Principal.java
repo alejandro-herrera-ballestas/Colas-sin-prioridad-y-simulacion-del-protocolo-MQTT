@@ -30,7 +30,7 @@ public class Principal {
             System.out.println("3. Procesar mensaje");
             System.out.println("4. Simular secuencia de operaciones");
             System.out.println("0. Salir");
-            System.out.print("Opción: ");
+            System.out.print("opcion: ");
             op = scanner.nextInt();
             scanner.nextLine(); // Limpiar el buffer
 
