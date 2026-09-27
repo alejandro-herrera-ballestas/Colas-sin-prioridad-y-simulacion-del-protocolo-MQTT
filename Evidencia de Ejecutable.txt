@@ -1,0 +1,89 @@
+run:
+Ingrese una opción:
+1. Crear la cola de mensajes
+2. Publicar mensaje
+3. Procesar mensaje
+4. Simular secuencia de operaciones
+0. Salir
+Opción: 1
+Cola creada. Actualmente está vacía.
+Ingrese una opción:
+1. Crear la cola de mensajes
+2. Publicar mensaje
+3. Procesar mensaje
+4. Simular secuencia de operaciones
+0. Salir
+Opción: 4
+Publicado -> 
+--- MensajeMQTT ---
+ID: 1
+Dispositivo: S01
+Topic: iot/sensor01/temperatura
+Payload: 28.5 °C
+Timestamp: 10:00:01
+Mensajes en cola: 1
+Publicado -> 
+--- MensajeMQTT ---
+ID: 2
+Dispositivo: S02
+Topic: iot/sensor02/humedad
+Payload: 76 %
+Timestamp: 10:00:02
+Mensajes en cola: 2
+Publicado -> 
+--- MensajeMQTT ---
+ID: 3
+Dispositivo: S03
+Topic: iot/sensor03/nivel
+Payload: 45 cm
+Timestamp: 10:00:03
+Mensajes en cola: 3
+Procesado -> 
+--- MensajeMQTT ---
+ID: 1
+Dispositivo: S01
+Topic: iot/sensor01/temperatura
+Payload: 28.5 °C
+Timestamp: 10:00:01
+Mensajes restantes: 2
+Publicado -> 
+--- MensajeMQTT ---
+ID: 4
+Dispositivo: S01
+Topic: iot/sensor01/temperatura
+Payload: 29.1 °C
+Timestamp: 10:00:04
+Mensajes en cola: 3
+Procesado -> 
+--- MensajeMQTT ---
+ID: 2
+Dispositivo: S02
+Topic: iot/sensor02/humedad
+Payload: 76 %
+Timestamp: 10:00:02
+Mensajes restantes: 2
+Procesado -> 
+--- MensajeMQTT ---
+ID: 3
+Dispositivo: S03
+Topic: iot/sensor03/nivel
+Payload: 45 cm
+Timestamp: 10:00:03
+Mensajes restantes: 1
+Procesado -> 
+--- MensajeMQTT ---
+ID: 4
+Dispositivo: S01
+Topic: iot/sensor01/temperatura
+Payload: 29.1 °C
+Timestamp: 10:00:04
+Mensajes restantes: 0
+La cola está vacía, no hay mensajes por procesar.
+Ingrese una opción:
+1. Crear la cola de mensajes
+2. Publicar mensaje
+3. Procesar mensaje
+4. Simular secuencia de operaciones
+0. Salir
+Opción: 0
+Saliendo del programa...
